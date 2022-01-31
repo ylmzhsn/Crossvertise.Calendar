@@ -1,0 +1,27 @@
+﻿@model Crossvertise.Calendar.Web.Models.AppointmentViewModel
+
+    <div class="col-xs-6 col-sm-6 col-md-6 offset-1 box" style="border:2px solid #dddd;">
+
+        <div class="row">
+            @Html.Label("Description") : @Model.Appointment.Description
+        </div>
+        <div class="row">
+            @Html.Label("Date") : @Model.Appointment.Date.ToString()
+        </div>
+        <div class="row">
+            @Html.Label("Organizer") : @Model.Appointment.OrganizerName
+        </div>
+        <div class="row">
+            @Html.Label("Attendies") : @(Model.Appointment.Attendees.Any() ? "" : "-")
+        </div> 
+        @foreach (var item in Model.Appointment.Attendees)
+        {
+            <div class="row">
+                <ul>
+                    <li>@item </li>
+                </ul>
+            </div>
+            
+        } 
+
+</div>

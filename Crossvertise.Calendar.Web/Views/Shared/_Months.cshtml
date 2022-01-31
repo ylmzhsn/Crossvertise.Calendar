@@ -1,0 +1,26 @@
+﻿@model Crossvertise.Calendar.Core.Enums.Months
+
+@using Crossvertise.Calendar.Core.Helpers
+@using Crossvertise.Calendar.Core.Enums
+@using Crossvertise.Calendar.Core.Extensions
+
+<div class="row" style="padding:15px">
+    <b>Choose your month :</b>
+</div>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+
+                @foreach (var month in EnumHelper.GetEnumList<Months>())
+                {
+
+                    <li class="nav-item">
+                        <a class="btn btn-light mr-1 @(Model == month ? "active" : "")" role="button" href="@Url.Action("GetAppointments", "Calendar", new { month = @month.GetHashCode() })">@month.GetDisplayName()</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</nav>
