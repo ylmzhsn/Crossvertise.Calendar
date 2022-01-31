@@ -1,0 +1,27 @@
+﻿@model Crossvertise.Calendar.Web.Models.AppointmentViewModel
+
+@using Crossvertise.Calendar.Core.Enums
+
+@{ ViewData["Title"] = Model.Appointment == null ? "Calendar" : "Appointment";  }
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="row" style="padding:15px">
+    <b>@ViewBag.Title</b>
+</div>
+<div class="container-fluid" style="border:2px solid #dddd;">
+
+    <partial name="_Months" model="Model.ChoosenMonth">
+
+        <div class="container-fluid" style="padding:10px">
+            <div class="row">
+
+                <partial name="_Calendar" model="Model">
+
+                @if (Model.Appointment != null)
+                {
+                    <partial name="_AppointmentDetail" model="Model" />
+                }
+            </div>
+        </div>
+</div>

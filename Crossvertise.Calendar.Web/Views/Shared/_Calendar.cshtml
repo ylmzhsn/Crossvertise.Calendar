@@ -1,0 +1,12 @@
+﻿@model Crossvertise.Calendar.Web.Models.CalendarViewModel
+
+<div class="col-xs-5 col-sm-5 col-md-5 box" style="border:2px solid #dddd;">
+
+    @foreach (var item in Model.Appointments)
+    {
+        <div class="row active">
+            <label> @item.Date.ToString() </label> :  <p> <a href="@Url.Action("GetAppointmentDetail", "Calendar", new { id = item.Id })">@item.Description</a> </p>
+        </div>
+    }
+
+</div>
